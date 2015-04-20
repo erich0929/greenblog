@@ -1,0 +1,15 @@
+<div id="content">
+	<div ng-repeat="article in articles" class="post">
+		<h3 class="title" style="display: inline-block;"><a href="/#/article/{{article.articleId}}">{{article.title}}</a></h3>
+		<p class="meta"><span class="date">{{article.date * 1000 | date:"MMMM d, yyyy 'at' HH:mm"}}</span><span class="posted">Posted by <a href="#">{{article.author}}</a></span></p>
+		<div style="clear: both;">&nbsp;</div>
+		<div class="entry" ng-bind-html="article.content">
+			
+		</div>
+		<p class="links"><a href="/#/article/{{article.articleId}}" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div ng-show="articles" align="center"><b  ng-click="getMore ()">Get More</b></div>
+	<div ng-show="!articles" align="center"><p style="margin: 40%;"><b>No content.</b></p></div>
+</div>
+<!-- end #content -->

@@ -1,0 +1,83 @@
+<h2>New Article</h2>
+<form method="post" id="article" action="{{domain + '/code/category/newArticle'}}" style="margin-top: 20px;">
+<table width="470px">
+<tr>
+ <td valign="top">
+  <label for="category">Category </label>
+ </td>
+ <td valign="top">
+  <select ng-model="category" ng-options="category.name for category in categories">
+  </select>
+  <input type="hidden" name="category" value="{{category.name}}">
+ </td>
+</tr>
+<tr>
+  <td valign="top">
+    <label for="author">Author </label>
+  </td>
+  <td>
+    <input type="text" style="width: 150px;" name="author" ng-model="author">
+  </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="title">Title </label>
+ </td>
+ <td valign="top">
+  <input type="text" style="width: 318px;" name="title" ng-model="title">
+ </td>
+</tr>
+<tr>
+ <td valign="top" >
+  <label for="content">Content </label>
+ </td>
+ <td valign="top">
+  <textarea name="content" id="editor1">
+    This is my textarea to be replaced with CKEditor.
+  </textarea>
+ </td>
+</tr>
+<tr>
+  <td valign="top">
+    <label>Tags </label>
+  </td>
+  <td>
+    <input type="text" id="tagString" ng-keyup="getTags ()">
+    <div id="tagPreview"></div>
+    <input type="hidden" id="tags" name="tags" value="{{tags}}">
+  </td>
+</tr>
+<tr>
+  <td valign="top">Upload </td>
+  <td>
+    <button id="upload-button">Upload</button>
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <td>
+    <input type="submit" value="Create">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td>
+    
+  </td>
+  <td class='message'>
+  </td>
+</tr>
+</table>
+</form>
+<div class='upload-window' title='File Upload'>
+  <form id='uploadForm' enctype="multipart/form-data" action='#' method='post'>
+    <div class='form-group'>
+      <label>File : </label>
+      <input type='file' name='uploadFile' size='20' maxlength='10' />
+    </div>
+    <br>
+    <button type="button" ng-click="upload ()" class="btn btn-default fileSubmit">
+      Upload File
+    </button>
+  </form>
+</div>

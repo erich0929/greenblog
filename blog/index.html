@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Emerald 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+-->
+<html ng-app="erich0929.app" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Linux is not unix</title>
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body ng-controller="appController">
+<div id="wrapper">
+	<div id="header-wrapper" class="container">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="/#/main">Blog </a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="/#/main">Blog</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+	<div><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<ng-view></ng-view>
+		<div id="sidebar">
+			<ul>
+				<li>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+				<li>
+					<h2>Tags</h2>
+					<p><a ng-repeat="tag in tags" style="margin : 5px; float: left;" href="#">{{tag.tag}}</a></p>
+				</li>
+				<li>
+					<div style="clear: both;">&nbsp;</div>
+					<h2>Categories</h2>
+					<ul>
+						<li ng-repeat="category in categories">
+							<a href="/#/category/{{category.name}}">{{category.name}}</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<h2>Archives</h2>
+					<ul>
+						<li><a href="#">Aliquam libero</a></li>
+						<li><a href="#">Consectetuer adipiscing elit</a></li>
+						<li><a href="#">Metus aliquam pellentesque</a></li>
+						<li><a href="#">Suspendisse iaculis mauris</a></li>
+						<li><a href="#">Urnanet non molestie semper</a></li>
+						<li><a href="#">Proin gravida orci porttitor</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div class="container"><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	<!-- end #page -->
+</div>
+<div id="footer-content"></div>
+<div id="footer">
+	<p>Copyright (c) 2012 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+</div>
+<!-- end #footer -->
+<!-- script link -->
+<script src="libs/jquery/dist/jquery.min.js"></script>
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular-resource/angular-resource.min.js"></script>
+<script src="libs/angular-route/angular-route.min.js"></script>
+<script src="script/app.js"></script>
+<script src="script/controllers/mainController.js"></script>
+<script src="script/controllers/viewController.js"></script>
+<script src="script/controllers/articleListController.js"></script>
+<script src="script/services/TopArticleService.js"></script>
+<script src="script/services/ArticleService.js"></script>
+<script src="script/services/categoryService.js"></script>
+<script src="script/services/commentService.js"></script>
+<script src="script/services/tagService.js"></script>
+</body>
+</html>

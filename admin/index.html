@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Emerald 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+-->
+<html ng-app="erich0929.app" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>My Blog</title>
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>	
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="stylesheet" href="libs/jquery-ui/themes/base/jquery-ui.css">
+</head>
+<body ng-controller="appController">
+<div id="wrapper">
+	<div id="header-wrapper" class="container">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#/">Dashboard </a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="#/">Dashboard</a></li>
+				<li><a href="http://blog.erich0929.com">Blog</a></li>
+				<li><a href="#">Photos</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+	<div><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="sidebar">
+			<ul>
+				<li>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+				<li>
+					<h2><a href="/#category">Create Category</a></h2>
+				</li>
+				<li>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+				<li>
+					<h2><a href="/#archive">Create Archive</a></h2>
+				</li>
+				<li>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+				<li>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+				<li>
+					<h2><a href="/#newArticle">Create New Article</a></h2>
+				</li>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div id="content">
+			<ng-view></ng-view>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div class="container"><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	<!-- end #page -->
+</div>
+<div id="footer-content"></div>
+<div id="footer">
+	<p>Copyright (c) 2012 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+</div>
+<!-- end #footer -->
+<!-- script -->
+<script src="libs/jquery/dist/jquery.min.js"></script>
+<script src="libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular-resource/angular-resource.min.js"></script>
+<script src="libs/angular-route/angular-route.min.js"></script>
+<script src="libs/contextMenu/src/jquery.ui.position.js"></script>
+<script src="libs/contextMenu/src/jquery.contextMenu.js"></script>
+<script src="libs/ckeditor/ckeditor.js"></script>
+<script src="script/app.js"></script>
+<script src="script/controllers/catController.js"></script>
+<script src="script/controllers/catTableController.js"></script>
+<script src="script/controllers/archiveController.js"></script>
+<script src="script/controllers/tagController.js"></script>
+<script src="script/controllers/newArticleController.js"></script>
+<script src="script/controllers/editArticleController.js"></script>
+<script src="script/services/categoryService.js"></script>
+</body>
+</html>

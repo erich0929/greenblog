@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="script/css/cat.css">
+<link rel="stylesheet" type="text/css" href="script/css/pagenation.css">
+<link rel="stylesheet" type="text/css" href="libs/contextMenu/src/jquery.contextMenu.css">
+<h2>{{category}}</h2>
+<br>
+<div class="list">
+<table>
+    <tr class="head">
+      <td style="width: 300px">Title</td>
+      <td style="width: 55px">Author</td>
+      <td style="width: 85px">Date</td>
+      <td>Status</td>
+      <input type="hidden" id="category" name="category" value="{{category}}">
+    </tr>
+    <tr class="articles" ng-repeat="article in articles">
+      <td class="title">{{article.title}}</td>
+      <td class="Author">{{article.author}}</td>
+      <td class="Date">{{article.date * 1000 | date:"MMMM d, yyyy 'at' HH:mm"}}</td>
+      <td class="status"></td>
+      <input type="hidden" id="id" name="articleId" value="{{article.articleId}}">
+      <input type="hidden" id="category" name="category" value="{{category}}">
+    </tr>
+</table>
+</div>
+<div class="containers">
+<div class="outer">
+<div class="inner">
+
+<div ng-show='articles' ng-click='getMore ();' class="centered">
+Get More
+</div>
+</div>
+</div>
+</div>
+
+

@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="script/css/cat.css">
+<link rel="stylesheet" type="text/css" href="libs/contextMenu/src/jquery.contextMenu.css">
+<h2>New Category</h2>
+<form method="post" style="margin-top: 20px;">
+<table width="450px">
+<tr>
+ <td valign="top">
+  <label for="first_name">Category *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="Category" maxlength="50" size="30" ng-model="name">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="first_name">Description *</label>
+ </td>
+ <td valign="top">
+  <textarea name="Category" style="width: 318px; height: 45px;" ng-model="desc"></textarea>
+ </td>
+</tr>
+<tr>
+  <td></td>
+  <td>
+    <button type="submit" value="Create" ng-click="createCategory (name, desc);">Create</button>
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td>
+    
+  </td>
+  <td class='message'>
+  </td>
+</tr>
+</table>
+</form>
+<br><br><br>
+<h1>Category List</h1>
+<br>
+<div class="list">
+<table>
+    <tr>
+      <td>Name</td>
+      <td collspan="3">Desciption</td>
+      <td collspan="1">Status</td>
+    </tr>
+    <tr class="categories" ng-repeat="category in categories">
+      <td class="name"><a href="/#category/{{category.name}}">{{category.name}}</a></td>
+      <td class="desc" collspan="3">{{category.description}}</td>
+      <td class="status" collspan="1"><div ng-show="category.status" ng-bind-html="category.status"></div></td>
+    </tr>
+</table>
+</div>

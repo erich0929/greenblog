@@ -1,0 +1,42 @@
+<div id="content">
+	<h1 class="title"><a>{{article.title}}</a></h1>
+	<br>
+	<p class="meta"><span class="date"><i>{{article.date * 1000 | date:"MMMM d, yyyy 'at' HH:mm"}}</i></span>&nbsp;<span class="posted">, Posted by <a href="#"><i><b>{{article.author}}</b></i></a></span></p>
+	<div style="clear: both;">&nbsp;</div>
+	<div class="entry" ng-bind-html="article.content"></div>
+	<div style="clear: both;">&nbsp;</div>
+	<div class="comment-box" style="margin-bottom: 10%"><h3 style="margin-bottom: 1%"><a>Post your comment</a></h3>
+		<div style="float: left;"><textarea id="commentBody" style="height: 78px; resize: none;border: 1px solid rgb(119, 120, 135);" cols="70"></textarea></div>
+		
+		<div ng-click="facebookLogin ()" align="center" style="text-align: center;float: left; border: 1px solid rgb(119, 120, 135); background-color: #83d97b; width: 70px; margin-left: -1%; margin-top:1px;height:25px; padding-top: 5%; padding-bottom: 4%; font-size: 20px">Post</div>
+	</div>
+
+	<div ng-show="comments" style="float: left; margin-top: 3%" class="comment">
+	<div id="commentAlarm"></div>
+		<div id="head"><h3><a>Comments {{comments.length}}</a></h3></div>
+		<hr style="border: #a39f97;">
+		<div style="margin-top: 5%; ">
+			<div ng-repeat="comment in comments" style="margin-top: 1%; margin-left: 5%; padding-bottom: 2% ;word-break: break-all; border-bottom:2px solid #f7f7f7">
+				<span style="font-size: 14px">{{comment.content}}</span>&nbsp;&nbsp;&nbsp;
+				<i style="font-size : 10px">{{comment.date * 1000 | date:"MMMM d, yyyy 'at' HH:mm"}} posted by {{comment.user}}</i>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : 'your-app-id',
+          xfbml      : true,
+          version    : 'v2.3'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+</script>
