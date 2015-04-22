@@ -17,6 +17,11 @@ angular.module ('erich0929.controller')
 	};
 
 	$scope.facebookLogin = function () {
+        if ($ ('#commentBody').val () == "") {
+            alert ("댓글을 입력하세요.");
+            return;
+        } 
+            
 		FB.login(function(response){
  			if (response.status === 'connected') {
     			var commentService = new CommentService ();
