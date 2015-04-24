@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS `Comments`;
 DROP TABLE IF EXISTS `Tags`;
 DROP TABLE IF EXISTS `Articles`;
 DROP TABLE IF EXISTS `Category`;
+DROP TABLE IF EXISTS `Archives`;
 
 CREATE TABLE `Category` 
 (
@@ -44,11 +45,15 @@ CREATE TABLE `Comments`
 	FOREIGN KEY (`articleId`) REFERENCES `Articles` (`articleId`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE `Archives` 
+(
+	`archiveId` INT UNSIGNED NOT NULL,
+	`rss` TEXT NOT NULL
+);
+
 INSERT INTO `Category` (`name`, `description`) 
 VALUES ('Football news', 'Mostly like sport.');
 INSERT INTO `Category` (`name`, `description`) 
 VALUES ('Mathematics Study', 'My Study on Mathematics.');
 INSERT INTO `Category` (`name`, `description`) 
 VALUES ('Economics Study', 'My Study on Economics.');
-
-	

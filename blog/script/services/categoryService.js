@@ -1,6 +1,6 @@
 // category.js
 
-angular.module ('erich0929.constant').constant ('dumpSize', 10);
+
 angular.module ('erich0929.service')
 	.factory ('CategoryService', ['$resource', 'domain', 'dumpSize', function ($resource, domain, dumpSize) {
 

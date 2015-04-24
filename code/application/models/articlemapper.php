@@ -35,7 +35,7 @@ class ArticleMapper extends CI_Model {
 	}
 
 	public function getMoreArticles ($category, $articleId, $limit) {
-		$sql = "SELECT * FROM `Articles` WHERE `category` = '{$category}' AND `articleId` < {$articleId} ORDER BY `articleId` DESC LIMIT {$limit}";
+		$sql = "SELECT * FROM `Articles` WHERE `category` = '{$category}' AND `articleId` < '{$articleId}' ORDER BY `articleId` DESC LIMIT {$limit}";
 		$result = $this -> db -> query ($sql);
 		return $result -> result ();
 	}

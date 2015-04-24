@@ -29,8 +29,8 @@ Released   : 20120902
 		<div id="menu">
 			<ul>
 				<li><a href="/#/main">Blog</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a >About</a></li>
+				<li><a >Contact</a></li>
 			</ul>
 		</div>
 	</div>
@@ -46,7 +46,7 @@ Released   : 20120902
 				</li>
 				<li>
 					<h2>Tags</h2>
-					<p><a ng-repeat="tag in tags" style="margin : 5px; float: left;" href="#">{{tag.tag}}</a></p>
+					<p><a ng-repeat="tag in tags" style="margin : 5px; float: left;" href="/#/tag/{{tag.tag}}">{{tag.tag}}</a></p>
 				</li>
 				<li>
 					<div style="clear: both;">&nbsp;</div>
@@ -60,12 +60,9 @@ Released   : 20120902
 				<li>
 					<h2>Archives</h2>
 					<ul>
-						<li><a href="#">Aliquam libero</a></li>
-						<li><a href="#">Consectetuer adipiscing elit</a></li>
-						<li><a href="#">Metus aliquam pellentesque</a></li>
-						<li><a href="#">Suspendisse iaculis mauris</a></li>
-						<li><a href="#">Urnanet non molestie semper</a></li>
-						<li><a href="#">Proin gravida orci porttitor</a></li>
+						<li ng-repeat="archive in archives">
+							<a href="/code/archive?id={{archive.archiveId}}" target="_blank">{{archive.archiveId * 1000 | date: "yyyy / MM"}}</a>
+						</li>
 					</ul>
 				</li>
 			</ul>
@@ -90,10 +87,12 @@ Released   : 20120902
 <script src="script/controllers/mainController.js"></script>
 <script src="script/controllers/viewController.js"></script>
 <script src="script/controllers/articleListController.js"></script>
+<script src="script/controllers/tagController.js"></script>
 <script src="script/services/TopArticleService.js"></script>
 <script src="script/services/ArticleService.js"></script>
 <script src="script/services/categoryService.js"></script>
 <script src="script/services/commentService.js"></script>
 <script src="script/services/tagService.js"></script>
+<script src="script/services/archiveService.js"></script>
 </body>
 </html>

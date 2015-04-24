@@ -1,0 +1,18 @@
+<div>
+<h1>새로운 아카이브를 만듭니다.</h1>
+<br>
+<p> 아카이브는 블로그의 모든 포스트를 스캔하여, 년/월 순으로 재정리합니다.
+각 아카이브는 RSS 피드 문서로 작성됩니다.
+아카이브들은 최신 블로의 포스트를 반영하지는 않습니다.
+만약 블로그의 포스트를 작성 또는 수정하였거나 삭제하였다면 이 항목의 '아카이브 업데이트' 버튼을 클리하세요. 그러면 최신 포스트들을 반영하는 새로운 아카이브들이 생성됩니다.</p>
+</div>
+<div>
+<button ng-click='updateArchive ()'>아카이브 업데이트</button>
+</div>
+<hr>
+Current Archives
+<ul>
+	<li ng-repeat="archive in archives">
+		<a href="{{domain}}/code/archive?id={{archive.archiveId}}" target="_blank">{{archive.archiveId * 1000 | date:"yyyy / MM"}}</a>
+	</li>
+</ul>

@@ -4,7 +4,7 @@ var app = angular.module ('erich0929.app', ['ngRoute', 'erich0929.controller', '
 	controller = angular.module ('erich0929.controller', ['erich0929.service', 'erich0929.constant']),
 	service = angular.module ('erich0929.service', ['ngResource', 'erich0929.constant']),
 	constant = angular.module ('erich0929.constant', []).constant ('domain', 'http://blog.erich0929.com');
-
+	angular.module ('erich0929.constant').constant ('dumpSize', 10);
 	app.config (['$routeProvider', function ($routeProvider) {
 
 		$routeProvider
@@ -64,11 +64,28 @@ var app = angular.module ('erich0929.app', ['ngRoute', 'erich0929.controller', '
 					}
 				}
 			})
+			.when ('/tag/:tag', 
+			{
+				templateUrl : 'script/templates/category.tmpl.html',
+				controller : 'tagController', 
+				resolve : {
+					articles : function ($route, TagService) {
+						var tag = $route.current.params.tag;
+						var tagService = new TagService ();
+						return tagService.getFirstArticles (tag).$promise;
+					},
+					tag : function ($route) {
+						return $route.current.params.tag;
+					}
+				}
+			})
 			.otherwise ( { redirectTo : '/main'} );
 
 	}]);
 
-	app.controller ('appController', ['$scope', '$rootScope', 'CategoryService', 'TagService', function ($scope, $rootScope, CategoryService, TagService) {
+	app.controller ('appController', 
+		['$scope', '$rootScope', 'CategoryService', 'TagService', 'ArchiveService', 
+		function ($scope, $rootScope, CategoryService, TagService, ArchiveService) {
 		var categoryService = new CategoryService ();
 		var callback = function (categories) {
 			$scope.categories = categories;
@@ -80,4 +97,9 @@ var app = angular.module ('erich0929.app', ['ngRoute', 'erich0929.controller', '
 			$scope.tags = tags;
 		}); 
 
+		// get archives
+		var archiveService = new ArchiveService ();
+		archiveService.getArchives (function (archives) {
+			$scope.archives = archives;
+		});
 	}]);

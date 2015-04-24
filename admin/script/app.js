@@ -37,7 +37,12 @@ var app = angular.module ('erich0929.app', ['ngRoute', 'erich0929.controller', '
 			{
 				templateUrl : 'script/templates/archive.tmpl.html',
 				controller : 'archiveController',
-				resolve : {}
+				resolve : {
+					'archives' : function (ArchiveService) {
+						var archiveService = new ArchiveService ();
+						return archiveService.getArchives ().$promise;
+					}
+				}
 			})
 			.when ('/tag', 
 			{
