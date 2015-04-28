@@ -33,7 +33,7 @@ Released   : 20120902
 				<li><a href="http://blog.erich0929.com">Blog</a></li>
 				<li><a href="#">Photos</a></li>
 				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
+				<li ng-show="isLogined"><a href="/code/auth/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -63,6 +63,12 @@ Released   : 20120902
 				</li>
 				<li>
 					<h2><a href="/#newArticle">Create New Article</a></h2>
+				</li>
+				<li>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+				<li>
+					<h2><a href="/#changePassword">Change Password</a></h2>
 				</li>
 			</ul>
 		</div>
@@ -99,7 +105,10 @@ Released   : 20120902
 <script src="script/controllers/tagController.js"></script>
 <script src="script/controllers/newArticleController.js"></script>
 <script src="script/controllers/editArticleController.js"></script>
+<script src="script/controllers/loginController.js"></script>
+<script src="script/controllers/changePasswordController.js"></script>
 <script src="script/services/categoryService.js"></script>
 <script src="script/services/archiveService.js"></script>
+<script src="script/services/authService.js"></script>
 </body>
 </html>

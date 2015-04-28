@@ -50,7 +50,7 @@ class ArchiveMapper extends CI_Model {
 
 	public function makeArchives () {
 		$archives = array ();
-		$allArticlesSql = "SELECT * FROM `Articles`";
+		$allArticlesSql = "SELECT * FROM `Articles` ORDER BY `articleId` DESC";
 		$resultId = $this -> db -> query ($allArticlesSql); 
 		
 		/* this array has object that has properties as table's column */
@@ -69,7 +69,7 @@ class ArchiveMapper extends CI_Model {
 				$rssElement = $this -> getRssElement ($articles [$i]);
 				$currentRssDocument = $currentRssDocument . $rssElement;	
 				/* for last element */
-				if ($i = $length -1) {
+				if ($i == $length -1) {
 					/* close doc */
 					$currentRssDocument = $currentRssDocument . $closeDoc;
 					/* store prev doc */
@@ -88,6 +88,14 @@ class ArchiveMapper extends CI_Model {
 				$currentArchiveId = $tempArchiveId;
 				/* open new doc */
 				$currentRssDocument = $this -> openDoc ($articles [$i]);
+				/* for just one article */
+				if ($i == $length -1) {
+					/* close doc */
+					$currentRssDocument = $currentRssDocument . $closeDoc;
+					/* store prev doc */
+					$rssDocument = array ('archiveId' => $currentArchiveId, 'rss' => $currentRssDocument);
+					array_push ($archives, $rssDocument);
+				}		
 			}
 		}
 		return $archives;
@@ -120,6 +128,6 @@ class ArchiveMapper extends CI_Model {
 		$title = "<title>My blog</title>";
 		$link = '<link>' . "http://blog.erich0929.com</link>";
 		$description = "<description>{$year}/{$month}</description>";
-		return $openDoc . $title . $link . $description;
+		return $openDoc . $title . $link . $description . $this -> getRssElement ($articleObj);
 	}
 }

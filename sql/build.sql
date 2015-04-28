@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS `Tags`;
 DROP TABLE IF EXISTS `Articles`;
 DROP TABLE IF EXISTS `Category`;
 DROP TABLE IF EXISTS `Archives`;
+DROP TABLE IF EXISTS `Auth`;
 
 CREATE TABLE `Category` 
 (
@@ -51,9 +52,18 @@ CREATE TABLE `Archives`
 	`rss` TEXT NOT NULL
 );
 
+CREATE TABLE `Auth` 
+(
+	`id` VARCHAR(30) NOT NULL,
+	`password` VARCHAR(100) NOT NULL
+);
+
 INSERT INTO `Category` (`name`, `description`) 
 VALUES ('Football news', 'Mostly like sport.');
 INSERT INTO `Category` (`name`, `description`) 
 VALUES ('Mathematics Study', 'My Study on Mathematics.');
 INSERT INTO `Category` (`name`, `description`) 
 VALUES ('Economics Study', 'My Study on Economics.');
+
+INSERT INTO `Auth` (`id`, `password`)
+VALUES ('admin', 'VMvTJUB0nu6d97b6ad7d23723c993eb325fb34f3a6');

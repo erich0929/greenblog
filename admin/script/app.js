@@ -5,7 +5,9 @@ var app = angular.module ('erich0929.app', ['ngRoute', 'erich0929.controller', '
 	service = angular.module ('erich0929.service', ['ngResource', 'erich0929.constant']),
 	constant = angular.module ('erich0929.constant', []).constant ('domain', 'http://admin.erich0929.com');
 
-	app.config (['$routeProvider', function ($routeProvider) {
+	app.config (['$routeProvider' ,
+			function ($routeProvider) {
+	
 		$routeProvider
 			.when ('/category', 
 			{
@@ -89,8 +91,47 @@ var app = angular.module ('erich0929.app', ['ngRoute', 'erich0929.controller', '
 					}
 				}
 			})
-			.otherwise ( { redirectTo : '/category'} );
-	}]);
-	app.controller ('appController', ['$scope', function ($scope) {
+			.when ('/login', 
+			{
+				templateUrl : 'script/templates/login.tmpl.html',
+				controller : 'loginController',
+				resolve : {
+					auth : function (AuthService) {
+						var authService = new AuthService ();
+						return authService.isLogined ().$promise;
+					}
+				}
+			})
+			.when ('/changePassword', 
+			{
+				templateUrl : 'script/templates/changePassword.tmpl.html',
+				controller : 'changePasswordController',
+				resolve : {
 
+				}
+			})
+			.otherwise ( { redirectTo : '/login'} );
+	}]).run (['$rootScope', 'AuthService', '$location',
+		 function ($rootScope, AuthService, $location) {
+		$rootScope.$on ('$routeChangeStart', function (e, next) {
+			var authService = new AuthService ();
+			authService.isLogined (function (data) {
+				if (data.isLogined) {
+					// do nothing
+					$rootScope.isLogined = true;
+				} else {
+					// route to login page.
+					$location.path ('/login');
+				}
+			});
+		});
+	}]);
+	app.controller ('appController', ['$scope', '$rootScope', 'AuthService', 
+		function ($scope, $rootScope, AuthService) {
+		var authService = new AuthService ();
+		authService.isLogined (function (data) {
+			if (data.isLogined) {
+				$scope.isLogined = true;
+			}
+		});
 	}]);

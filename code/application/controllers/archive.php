@@ -5,6 +5,16 @@ class Archive extends CI_Controller {
 		parent::__construct ();
 		$this -> load -> database ();
 		$this -> load -> model ('archivemapper');
+
+		$auth_method = ["update"];
+
+		$RTR =& load_class ('Router', 'core');
+		$method = $RTR->fetch_method();
+
+		if (in_array($method, $auth_method) AND !$this -> session -> userdata ('admin') ) {
+			header ('Location: http://admin.erich0929.com/#/login');
+			exit ();
+		}
 	}
 	public function index () {
 		if ($id = $this -> input -> get ('id')) {

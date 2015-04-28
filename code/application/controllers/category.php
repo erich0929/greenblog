@@ -6,8 +6,19 @@ class Category extends CI_Controller {
 		parent::__construct ();
 		$this -> load -> database ();
 		$this -> load -> library ('form_validation');
+		$this -> load -> library ('session');
 		$this -> load -> model ('categoryMapper');
 		$this -> load -> model ('articleMapper');
+		
+		$auth_method = ["create", "delete", "newArticle", "deleteArticle", "editArticle"];
+
+		$RTR =& load_class ('Router', 'core');
+		$method = $RTR->fetch_method();
+
+		if (in_array($method, $auth_method) AND !$this -> session -> userdata ('admin') ) {
+			header ('Location: http://admin.erich0929.com/#/login');
+			exit ();
+		}
 	}
 
 	public function index()

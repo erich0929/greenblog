@@ -14,6 +14,16 @@ class Upload extends CI_Controller {
 		);
 
 		$this -> load -> library ('upload', $config);
+
+		$auth_method = ["image"];
+
+		$RTR =& load_class ('Router', 'core');
+		$method = $RTR->fetch_method();
+
+		if (in_array($method, $auth_method) AND !$this -> session -> userdata ('admin') ) {
+			header ('Location: http://admin.erich0929.com/#/login');
+			exit ();
+		}
 	}
 
 	public function image () {
