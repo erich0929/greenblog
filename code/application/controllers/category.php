@@ -89,7 +89,7 @@ class Category extends CI_Controller {
 
 	private function processArticle ($method) {
 		$this -> form_validation -> set_rules ('category', 'category', 'required');
-		$this -> form_validation -> set_rules ('title', 'title', 'required|max_length[30]');
+		$this -> form_validation -> set_rules ('title', 'title', 'required|max_length[100]');
 		$this -> form_validation -> set_rules ('author', 'author', 'required|max_length[30]');
 		$this -> form_validation -> set_rules ('content', 'content', 'required');
 		$this -> form_validation -> set_rules ('tags', 'tags', 'required');
@@ -104,7 +104,7 @@ class Category extends CI_Controller {
 		
 		if ($this -> form_validation -> run () == false) {
 			//$message = validation_errors ();
-			header ('Location: http://admin.erich0929.com/#/error/post?msg=' . $message);
+			header ('Location: http://admin.erich0929.compact(varname)m/#/error/post?msg=' . $message);
 			return;
 		}
 		print_r ($article);
